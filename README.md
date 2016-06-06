@@ -23,3 +23,17 @@ The usage is very simple, the layer just has to be used as an accuracy layer in 
 	}
 
 There is a working example in the `examples` folder, which must be copied in `caffe/examples` folder in order for the relative paths to work. The file `python_confmat.py` must be copied in `caffe/examples/mnist` to work for the example, but for your own usage you can place it anywhere as long as the path is included in your `$PYTHONPATH`.
+
+The confusion matrix is printed to console and looks like this:
+
+	Confusion Matrix                                                | Accuracy
+	------------------------------------------------------------------------
+	3438    166     191     16      45      9       136     0       | 85.93 % 
+	191     3306    177     1       69      2       15      0       | 87.90 % 
+	88      114     3205    34      431     46      80      3       | 80.10 % 
+	30      12      98      3735    78      23      24      0       | 93.38 % 
+	11      28      437     29      3196    65      45      11      | 83.62 % 
+	3       0       64      7       38      3702    8       0       | 96.86 % 
+	59      4       79      42      44      5       3234    1       | 93.25 % 
+	2       0       29      3       113     9       6       2639    | 94.22 % 
+	Number of test samples: 29676
