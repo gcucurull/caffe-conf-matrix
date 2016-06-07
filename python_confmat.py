@@ -1,6 +1,7 @@
 import caffe
 import json
 import numpy as np
+import sys
 
 import sklearn.metrics
 
@@ -44,17 +45,18 @@ class PythonConfMat(caffe.Layer):
         
         if self.current_iter == self.test_iter:
             self.current_iter = 0
-            print '\nCAUTION!! test_iter = %i. Make sure this is the correct value' % self.test_iter
-            print '"param_str: \'{"test_iter":%i}\'" has been set in the definition of the PythonLayer' % self.test_iter
-            print '\nConfusion Matrix',
-            print '\t'*(self.num_labels-2)+'| Accuracy'
-            print '-'*8*(self.num_labels+1)
+            sys.stdout.write('\nCAUTION!! test_iter = %i. Make sure this is the correct value' % self.test_iter)
+            sys.stdout.write('\n"param_str: \'{"test_iter":%i}\'" has been set in the definition of the PythonLayer' % self.test_iter)
+            sys.stdout.write('\n\nConfusion Matrix')
+            sys.stdout.write('\t'*(self.num_labels-2)+'| Accuracy')
+            sys.stdout.write('\n'+'-'*8*(self.num_labels+1))
+            sys.stdout.write('\n')
             for i in range(len(self.conf_matrix)):
                 for j in range(len(self.conf_matrix[i])):
-                    print(str(self.conf_matrix[i][j].astype(np.int))+'\t'),
-                print '| %3.2f %%' % (self.conf_matrix[i][i]*100 / self.conf_matrix[i].sum()),
-                print ''
-            print 'Number of test samples: %i \n' % self.conf_matrix.sum()
+                    sys.stdout.write(str(self.conf_matrix[i][j].astype(np.int))+'\t')
+                sys.stdout.write('| %3.2f %%' % (self.conf_matrix[i][i]*100 / self.conf_matrix[i].sum()))
+                sys.stdout.write('\n')
+            sys.stdout.write('Number of test samples: %i \n\n' % self.conf_matrix.sum())
             # reset conf_matrix for next test phase
             self.conf_matrix = np.zeros((self.num_labels, self.num_labels))
 
