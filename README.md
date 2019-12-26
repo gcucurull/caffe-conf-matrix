@@ -1,5 +1,5 @@
 # caffe-conf-matrix
-Pyhton layer for the Caffe [Caffe](https://github.com/BVLC/caffe) deep learning framework to compute the accuracy and the confusion matrix.
+Python layer for the Caffe [Caffe](https://github.com/BVLC/caffe) deep learning framework to compute the accuracy and the confusion matrix.
 This layer will print a confusion matrix of the TEST predictions after the whole TEST images have been processed. It will also work as an accuracy layer, providing Caffe with the predictions accuracy on the TEST set.
 
 The usage is very simple, the layer just has to be used as an accuracy layer in the prototxt file like:
